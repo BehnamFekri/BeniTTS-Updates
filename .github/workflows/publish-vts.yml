@@ -1,0 +1,46 @@
+name: Publish VTS pack
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download and package Koochik
+        id: pack
+        run: |
+          set -euo pipefail
+          URL="https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-nemo-ctc-fa-shenava-koochik-v1.0-non-streaming-2026-06-26.tar.bz2"
+          curl -fL --retry 3 -o /tmp/koochik.tar.bz2 "$URL"
+          mkdir -p /tmp/koochik /tmp/vtszip
+          tar -xjf /tmp/koochik.tar.bz2 -C /tmp/koochik
+          MODEL=$(find /tmp/koochik -type f \( -name 'model.int8.onnx' -o -name 'model.onnx' \) | head -1)
+          TOKENS=$(find /tmp/koochik -type f -name 'tokens.txt' | head -1)
+          test -n "$MODEL"
+          test -n "$TOKENS"
+          cp "$MODEL" /tmp/vtszip/model.onnx
+          cp "$TOKENS" /tmp/vtszip/tokens.txt
+          printf '%s\n' '{"id":"vts-koochik","version":"1.0.0","source":"k2-fsa sherpa-onnx-nemo-ctc-fa-shenava-koochik-v1.0-non-streaming-2026-06-26"}' > /tmp/vtszip/manifest.json
+          OUT="$GITHUB_WORKSPACE/vts-koochik-1.0.0.zip"
+          rm -f "$OUT"
+          (cd /tmp/vtszip && zip -1 -r "$OUT" model.onnx tokens.txt manifest.json)
+          ls -lh "$OUT"
+          echo "zip=vts-koochik-1.0.0.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: vts-koochik-1.0.0
+          name: VTS Shenava Koochik 1.0.0
+          files: vts-koochik-1.0.0.zip
+          fail_on_unmatched_files: true
+          body: |
+            ماژول تشخیص گفتار فارسی (Shenava Koochik) برای BeniTTS_VTS.
+            فقط model.onnx + tokens.txt. سورس اپ و APK در این مخزن نیست.
