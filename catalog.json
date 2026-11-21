@@ -1,0 +1,29 @@
+{
+  "app": {
+    "version": "1.4.0",
+    "apkUrl": ""
+  },
+  "voices": {
+    "mana": {
+      "version": "1.2.0",
+      "zipUrl": ""
+    },
+    "ganji": {
+      "version": "1.2.0",
+      "zipUrl": ""
+    }
+  },
+  "components": {
+    "espeak-fa": {
+      "version": "1.2.0",
+      "zipUrl": ""
+    },
+    "vts-koochik": {
+      "version": "1.0.0",
+      "id": "vts-koochik",
+      "label": "تشخیص گفتار فارسی (Shenava Koochik)",
+      "zipUrl": "https://github.com/BehnamFekri/BeniTTS-Updates/releases/download/vts-koochik-1.0.0/vts-koochik-1.0.0.zip",
+      "notes": "ماژول دیکته آفلاین. APK در این مخزن نیست."
+    }
+  }
+}
