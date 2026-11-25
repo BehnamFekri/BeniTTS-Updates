@@ -1,7 +1,7 @@
 {
   "app": {
-    "version": "1.4.0",
-    "apkUrl": ""
+    "version": "1.4.4",
+    "apkUrl": "https://github.com/BehnamFekri/Beni-Repository-HUB/releases/download/BeniTTS_VTS-1.4.4/BeniTTS_VTS-1.4.4-debug.apk"
   },
   "voices": {
     "mana": {
