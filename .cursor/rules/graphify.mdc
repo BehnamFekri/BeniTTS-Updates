@@ -1,0 +1,5 @@
+---
+description: Graphify-first workflow
+alwaysApply: true
+---
+Follow AGENTS.md and docs/GRAPHIFY_WORKFLOW.md before code changes. Check graph status and use focused queries/paths, read only relevant source/tests, then sync and verify after related code changes. Keep graph data local.

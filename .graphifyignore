@@ -1,0 +1,3 @@
+# Graphify generated local data only; never commit.
+graphify-out/
+**/graphify-out/

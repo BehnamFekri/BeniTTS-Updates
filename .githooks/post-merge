@@ -1,0 +1,8 @@
+#!/bin/sh
+ROOT=$(git rev-parse --show-toplevel) || exit 0
+cd "$ROOT" || exit 0
+if command -v py >/dev/null 2>&1; then py -3 scripts/graphify_workflow.py status
+else python3 scripts/graphify_workflow.py status
+fi
+if [ $? -ne 0 ]; then echo 'Graphify needs attention; run sync if authorized.' >&2; fi
+exit 0

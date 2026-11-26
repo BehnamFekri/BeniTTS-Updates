@@ -1,0 +1,6 @@
+#!/bin/sh
+ROOT=$(git rev-parse --show-toplevel) || exit 1
+cd "$ROOT" || exit 1
+if command -v py >/dev/null 2>&1; then py -3 scripts/graphify_workflow.py precommit
+else python3 scripts/graphify_workflow.py precommit
+fi

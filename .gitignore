@@ -1,0 +1,8 @@
+# Graphify generated local graph/cache state; never commit.
+**/graphify-out/
+**/.graphify-workflow-state.json
+**/.graphify-workflow.lock/
+
+# Python test/runtime cache
+__pycache__/
+*.py[cod]

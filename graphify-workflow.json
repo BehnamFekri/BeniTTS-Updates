@@ -1,0 +1,10 @@
+{
+  "package": "graphifyy[sql]",
+  "graph_roots": [
+    "."
+  ],
+  "exclude_paths": [
+    "scripts/graphify_workflow.py",
+    "tests/test_graphify_workflow.py"
+  ]
+}
