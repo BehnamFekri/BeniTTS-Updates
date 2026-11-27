@@ -1,7 +1,7 @@
 {
   "app": {
-    "version": "1.4.7",
-    "apkUrl": "https://github.com/BehnamFekri/BeniTTS-Updates/releases/download/BeniTTS_VTS-1.4.7/BeniTTS_VTS-1.4.7-debug.apk"
+    "version": "1.4.8",
+    "apkUrl": "https://github.com/BehnamFekri/BeniTTS-Updates/releases/download/BeniTTS_VTS-1.4.8/BeniTTS_VTS-1.4.8-debug.apk"
   },
   "voices": {
     "mana": {
